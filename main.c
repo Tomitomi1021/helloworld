@@ -49,19 +49,14 @@ void daemon_main(){
 			continue;
 		}
 		if(!fork()){
-			while(1){
-				char mes[]="Hello World!!\r\n";
-				int res=send(
-					clientSock,
-					mes,
-					sizeof(mes),
-					0
-					);
-				if(res==-1){
-					printError();
-					break;
-				}
-			}
+			char mes[]="Hello World!!\r\n";
+			int res=send(
+				clientSock,
+				mes,
+				sizeof(mes),
+				0
+				);
+			if(res==-1)printError();
 			shutdown(clientSock,SHUT_RDWR);
 			close(clientSock);
 			exit(0);
