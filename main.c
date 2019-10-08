@@ -49,11 +49,11 @@ void daemon_main(){
 			continue;
 		}
 		if(!fork()){
-			char mes[]="Hello World!!\r\n";
+			char mes[]="Hello World!!";
 			int res=send(
 				clientSock,
 				mes,
-				sizeof(mes),
+				sizeof(mes)-1,
 				0
 				);
 			if(res==-1)printError();
